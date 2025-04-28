@@ -10,9 +10,9 @@ public class LanzarBuscarPalabra {
 	private static final String rutaResources = "src\\main\\resources\\";
 
 	public static void main(String[] args) {
-		
+
 		int numeroTotal = 0;
-		
+
 		// Instanciando dos objetos File
 		File file1 = new File(rutaResources + "archivo2.txt");
 		File file2 = new File(rutaResources + "archivo3.txt");
@@ -24,34 +24,46 @@ public class LanzarBuscarPalabra {
 
 		BuscarPalabraFichero buscar = new BuscarPalabraFichero(fileList);
 
-		String[] palabrasClave = { "sol", "bosque" };
-		HiloContarPalabraFichero[] hilos = new HiloContarPalabraFichero[fileList.size()];
+		String[] palabrasClave = { "brilla", "bosque" };
 
 		for (int i = 0; i < palabrasClave.length; i++) {
-			hilos[i] = new HiloContarPalabraFichero(buscar, palabrasClave[i]);
 
+			buscar.leerFichero(palabrasClave[i]);
+			
 		}
 
-		for (HiloContarPalabraFichero hilo : hilos) {
-			hilo.start();
-		}
-
-		for (HiloContarPalabraFichero hilo : hilos) {
-			try {
-				hilo.join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-
-		for (HiloContarPalabraFichero hilo : hilos) {
-
-//			numeroTotal = hilo.getN + numeroTotal;
-
-		}
-
-		System.out.println(numeroTotal);
-
+		
+//
+//		String[] palabrasClave = { "brilla", "bosque" };
+//		HiloContarPalabraFichero[] hilos = new HiloContarPalabraFichero[fileList.size()];
+//
+//		for (int i = 0; i < palabrasClave.length; i++) {
+//			hilos[i] = new HiloContarPalabraFichero(buscar, palabrasClave[i]);
+//
+//		}
+//
+//		for (HiloContarPalabraFichero hilo : hilos) {
+//			hilo.start();
+//		}
+//
+//		for (HiloContarPalabraFichero hilo : hilos) {
+//			try {
+//				hilo.join();
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//
+//
+//        int totalPalabras = 0;
+//        for (int i = 0; i < hilos.length; i++) {
+//            System.out.println("Palabra '" + palabrasClave[i] + "' encontrada: " + hilos[i].getResultado() + " veces.");
+//            totalPalabras += hilos[i].getResultado();
+//        }
+//
+//        System.out.println("Total de palabras encontradas: " + totalPalabras);
+//    
+//
 	}
 
 }

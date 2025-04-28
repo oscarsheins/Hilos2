@@ -18,7 +18,7 @@ public class BuscarPalabraFichero {
 	
 	public BuscarPalabraFichero(List<File> ficheros) {
 		super();
-		this.ficheros = new ArrayList<File>();
+		this.ficheros = ficheros;
 	}
 
 	public List<File> getFicheros() {
@@ -40,6 +40,7 @@ public class BuscarPalabraFichero {
 	public int leerFichero(String palabraABuscar) {
 		
 		int contadoPalabra = 0;
+		
 		for(File fichero : ficheros) {
 			
 			
@@ -49,7 +50,6 @@ public class BuscarPalabraFichero {
 				FileReader ficheroCriatura = new FileReader(rutaResources + fichero.getName());
 				in = new Scanner(ficheroCriatura);
 				in.useLocale(Locale.ENGLISH);
-				in.useDelimiter(",|\\r?\\n");
 
 				if (in.hasNextLine()) {
 					in.nextLine();
@@ -57,14 +57,14 @@ public class BuscarPalabraFichero {
 
 				while (in.hasNext()) {
 
-					String palabra = in.next();
+					 String palabra = in.next();
+					 System.out.println("Palabra leída: [" + palabra + "]");
 
-					if (palabra.equals(palabraABuscar)) {
-
-						contadoPalabra++;
-						
-
-					}
+					    
+					    if (palabra.equalsIgnoreCase(palabraABuscar)) {
+					        contadoPalabra++;
+					        System.out.println("Coincidencia	");
+					    }
 
 				}
 
@@ -77,7 +77,7 @@ public class BuscarPalabraFichero {
 				}
 			}
 
-			System.out.println("Se a contado la palbra" + contadoPalabra);
+			
 		}
 		
 		return this.TotalPalabras = contadoPalabra;

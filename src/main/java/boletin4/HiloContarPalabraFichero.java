@@ -4,6 +4,8 @@ public class HiloContarPalabraFichero extends Thread {
 	
 	private BuscarPalabraFichero buscar;
 	private String palabraBuscar;
+	private int resultado;
+	
 	
 	public HiloContarPalabraFichero(BuscarPalabraFichero buscar, String palabraBuscar) {
 		super();
@@ -27,11 +29,20 @@ public class HiloContarPalabraFichero extends Thread {
 		this.palabraBuscar = palabraBuscar;
 	}
 	
-	
+
+	public int getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(int resultado) {
+		this.resultado = resultado;
+	}
+
 	@Override
 	public void run() {
 		
-		buscar.leerFichero(palabraBuscar);
+		resultado = buscar.leerFichero(palabraBuscar);
+		
 		
 	}
 
